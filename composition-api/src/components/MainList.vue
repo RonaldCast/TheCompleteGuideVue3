@@ -8,6 +8,7 @@
   <br />
   <SearchList />
   <DisplayList />
+  <button @click="stop()">Stop Watch</button>
 </template>
 
 <script>
@@ -24,17 +25,26 @@ export default {
   },
   setup() {
     const disable = ref(false);
-    const divElement = ref(null)
+    const divElement = ref(null);
 
     const show = () => {
       disable.value = !disable.value;
     };
 
-    watchEffect(()=>{
-        console.log(divElement.value)
-    })
+    const stop = watchEffect(
+      () => {
+        console.log(disable.value);
+        console.log(divElement.value);
+      },
+      {
+        onTrigger(e) {
+          console.log(e, "sdsdsdsdsd");
+          
+        },
+      }
+    );
 
-    return { disable, divElement, show };
+    return { disable, divElement, show, stop };
   },
 };
 </script>
