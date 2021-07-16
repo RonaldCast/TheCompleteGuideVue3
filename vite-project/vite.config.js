@@ -12,6 +12,15 @@ export default defineConfig({
         'ie': 9
       },
       additionalLegacyPolyfills: ["regenerator-runtime/runtime"],
+      polyfills: [
+        'es.object.define-properties',
+        'es.object.define-property',
+        'es.object.define-setter',
+        'es.array.iterator',
+        'es.promise',
+        'es.object.assign',
+        'es.promise.finally'
+      ]
     }),
   ],
 });
